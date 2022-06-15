@@ -1,0 +1,46 @@
+class Solution {
+    public List<Integer> spiralOrder(int[][] arr) {
+         // int arr[][] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+        // define the boundaries...
+        int startRow = 0;
+        int startCol = 0;
+        int end_Row = arr.length - 1;
+        int end_col = arr[0].length - 1;
+        List<Integer> list = new ArrayList<>();
+
+        if (arr.length == 0) {
+            System.out.println(list);
+        }
+
+        while (startRow <= end_Row && startCol <= end_col) {
+            // print the first row
+            for (int j = startCol; j <= end_col; j++) {
+                list.add(arr[startRow][j]);
+            }
+            // for last column
+            startRow++;
+            for (int j = startRow; j <= end_Row; j++) {
+                list.add(arr[j][end_col]);
+            }
+            end_col--;
+            if (startRow <= end_Row ) {
+                for (int j = end_col; j >= startCol; j--) {
+                    list.add(arr[end_Row][j]);
+                }
+                end_Row--;
+            }
+
+            if (startCol <= end_col) {
+                for (int j = end_Row; j >= startRow; j--) {
+                    list.add(arr[j][startCol]);
+                }
+                startCol++;
+            }
+        }
+
+        // System.out.println(list);
+        // System.out.println( list.get(3));
+        return list;
+      
+    }
+}
